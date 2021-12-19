@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ships/ship_pluto.tscn" type="PackedScene" id=1]
+[ext_resource path="res://solar_systems/orsol/sun.tscn" type="PackedScene" id=2]
+
+[sub_resource type="SphereMesh" id=1]
+radius = 10000.0
+height = 20000.0
+
+[node name="Space" type="Spatial"]
+
+[node name="ShipPluto" parent="." instance=ExtResource( 1 )]
+transform = Transform( 0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, 0, 0, 0 )
+
+[node name="Camera" type="Camera" parent="ShipPluto"]
+transform = Transform( -1.19209e-07, 0, 1, 0, 1, 0, -1, 0, -1.19209e-07, 41, 19, 0 )
+far = 1e+06
+
+[node name="SolarSystems" type="Spatial" parent="."]
+
+[node name="Sun" parent="SolarSystems" instance=ExtResource( 2 )]
+
+[node name="MeshInstance" type="MeshInstance" parent="SolarSystems/Sun"]
+transform = Transform( 0.998586, 0, 0.0531551, 0, 1, 0, -0.0531551, 0, 0.998586, 483584, 0, -12861.6 )
+mesh = SubResource( 1 )
+material/0 = null
